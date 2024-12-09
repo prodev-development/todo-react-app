@@ -1,10 +1,10 @@
 import React from "react";
 
-import TodoItem from "./Item";
-import TodoAdd from "./Add";
-import { useTodos } from "../../selectors/todo";
+import TodoItem from "../components/todo/Item";
+import TodoAdd from "../components/todo/Add";
+import { useTodos } from "../store/selectors/todo";
 
-function TodoList() {
+const TodoList = () => {
   const items = useTodos();
   return (
     <div>
@@ -16,6 +16,6 @@ function TodoList() {
       ))}
     </div>
   );
-}
+};
 
 export default TodoList;

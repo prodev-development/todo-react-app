@@ -3,7 +3,7 @@ import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeTodo, removeTodo } from "../../actions/todo";
 
-function TodoItem({ item }) {
+const TodoItem = ({ item }) => {
   const dispatch = useDispatch();
   const [currentItem, setCurrentItem] = useState({});
   const [isEditable, setIsEditable] = useState(false);
@@ -122,6 +122,6 @@ function TodoItem({ item }) {
       )}
     </div>
   );
-}
+};
 
 export default TodoItem;

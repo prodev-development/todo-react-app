@@ -1,11 +1,10 @@
-import { createStore } from "redux";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   todos: [],
 };
 
-const reducer = (state = initialState, action) => {
+const todo = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TODO": {
       const { todos } = state;
@@ -29,6 +28,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer);
-
-export default store;
+export default todo;

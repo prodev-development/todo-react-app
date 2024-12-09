@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { addTodo } from "../../actions/todo";
 
-function TodoAdd() {
+const TodoAdd = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
@@ -30,6 +30,6 @@ function TodoAdd() {
       </div>
     </div>
   );
-}
+};
 
 export default TodoAdd;
