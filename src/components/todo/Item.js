@@ -3,7 +3,7 @@ import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 import Tool from "./Tool";
-import { changeTodo, removeTodo } from "../../actions/todo";
+import { changeTodo, removeTodo } from "../../store/actions/todo";
 
 const TodoItem = ({ item }) => {
   const dispatch = useDispatch();

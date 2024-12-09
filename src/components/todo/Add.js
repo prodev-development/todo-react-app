@@ -3,7 +3,7 @@ import { TextField, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { Box } from "@mui/material";
 
-import { addTodo } from "../../actions/todo";
+import { addTodo } from "../../store/actions/todo";
 
 const TodoAdd = () => {
   const dispatch = useDispatch();
