@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 
-import Tool from "./Tool";
+import Tool from "./TodoActions";
 import { changeTodo, removeTodo } from "../../store/actions/todo";
 
 const TodoItem = ({ item }) => {
