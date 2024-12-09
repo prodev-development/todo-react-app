@@ -75,7 +75,7 @@ const TodoItem = ({ item }) => {
           ) : currentItem.checked ? (
             <>
               <Box sx={{ textDecoration: "line-through" }}>{item.text}</Box>
-              <Box component="span" sx={{ fontSize: "12px" }}>
+              <Box component="span" typography="caption">
                 {convertString(currentItem)}
               </Box>
             </>
