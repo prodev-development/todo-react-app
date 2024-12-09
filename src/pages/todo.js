@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Divider, Stack } from "@mui/material";
 
-import TodoItem from "../components/todo/Item";
-import TodoAdd from "../components/todo/Add";
+import TodoItem from "../components/todo/TodoItem";
+import TodoAdd from "../components/todo/AddItem";
 import { useTodos } from "../store/selectors/todo";
 
 const TodoPage = () => {
