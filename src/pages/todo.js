@@ -1,21 +1,30 @@
 import React from "react";
+import { Box, Divider, Stack } from "@mui/material";
 
 import TodoItem from "../components/todo/Item";
 import TodoAdd from "../components/todo/Add";
 import { useTodos } from "../store/selectors/todo";
 
-const TodoList = () => {
+const TodoPage = () => {
   const items = useTodos();
   return (
-    <div>
-      <div className="mb-3">
-        <TodoAdd />
-      </div>
-      {items.map((item, index) => (
-        <TodoItem key={index} item={item} />
-      ))}
-    </div>
+    <Box>
+      <TodoAdd />
+      <Stack
+        direction="column"
+        spacing={1}
+        justifyContent="center"
+        alignItems="center"
+      >
+        {items.map((item, index) => (
+          <>
+            <TodoItem key={index} item={item} />
+            <Divider />
+          </>
+        ))}
+      </Stack>
+    </Box>
   );
 };
 
-export default TodoList;
+export default TodoPage;

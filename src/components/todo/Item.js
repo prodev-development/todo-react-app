@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
+
+import Tool from "./Tool";
 import { changeTodo, removeTodo } from "../../actions/todo";
 
 const TodoItem = ({ item }) => {
@@ -45,9 +47,11 @@ const TodoItem = ({ item }) => {
   };
 
   return (
-    <div
-      className="d-flex align-items-center justify-content-between w-100"
-      style={{ height: 70 }}
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ width: 1, height: 50 }}
     >
       <FormControlLabel
         control={
@@ -69,58 +73,44 @@ const TodoItem = ({ item }) => {
               }
             />
           ) : currentItem.checked ? (
-            <div>
-              <span className="text-decoration-line-through">{item.text}</span>
-              <br />
-              <span className="badge bg-light text-dark">
+            <>
+              <Box sx={{ textDecoration: "line-through" }}>{item.text}</Box>
+              <Box component="span" sx={{ fontSize: "12px" }}>
                 {convertString(currentItem)}
-              </span>
-            </div>
+              </Box>
+            </>
           ) : (
-            <span>{item.text}</span>
+            <Box component="span">{item.text}</Box>
           )
         }
       />
-      {isEditable ? (
-        <div>
-          <Button
-            className="ms-3"
-            variant="contained"
-            color="primary"
-            onClick={onSave}
-          >
-            Save
-          </Button>
-          <Button
-            className="ms-3"
-            variant="contained"
-            color="error"
-            onClick={onCancel}
-          >
-            Cancel
-          </Button>
-        </div>
-      ) : (
-        <div className="d-flex">
-          <Button
-            className="ms-3"
-            variant="contained"
-            color="primary"
-            onClick={onEdit}
-          >
-            Edit
-          </Button>
-          <Button
-            className="ms-3"
-            variant="contained"
-            color="error"
-            onClick={onRemove}
-          >
-            Remove
-          </Button>
-        </div>
-      )}
-    </div>
+      <Box display="flex">
+        <Tool
+          isVisible={isEditable}
+          color="primary"
+          onClick={onSave}
+          text="Save"
+        />
+        <Tool
+          isVisible={isEditable}
+          color="error"
+          onClick={onCancel}
+          text="Cancel"
+        />
+        <Tool
+          isVisible={!isEditable}
+          color="primary"
+          onClick={onEdit}
+          text="Edit"
+        />
+        <Tool
+          isVisible={!isEditable}
+          color="error"
+          onClick={onRemove}
+          text="Remove"
+        />
+      </Box>
+    </Box>
   );
 };
 

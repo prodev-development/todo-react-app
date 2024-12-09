@@ -1,10 +1,11 @@
 import React from "react";
+import { Box } from "@mui/material";
 
 const Header = () => {
   return (
-    <div className="d-flex justify-content-center m-5">
-      <h2>Todo App</h2>
-    </div>
+    <Box textAlign="center" typography="h3" sx={{ p: 3 }}>
+      Todo App
+    </Box>
   );
 };
 

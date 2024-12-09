@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73950685-4a4e-4334-b0c6-35244538afb3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
+    <list default="true" id="73950685-4a4e-4334-b0c6-35244538afb3" name="Changes" comment="fix: correct the project file structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Todo/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todo/Add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Todo/Item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todo/Item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Todo/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/selectors/todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/selectors/todo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,16 +23,23 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;peterjohn3128&quot;
-  }
-}</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/prodev-development/todo-react-app.git",
     "accountId": "40bdd5e3-d693-405d-b73c-ca019b44ff77"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "prodev-development",
+    "repository": "todo-react-app"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -55,7 +56,7 @@
     "Node.js.store.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "fix/241209-1",
+    "git-widget-placeholder": "#1 on fix/241209-1",
     "last_opened_file_path": "E:/todo-react-app/src/store/reducers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -113,8 +114,17 @@
       <updated>1733761070013</updated>
       <workItem from="1733761071471" duration="130000" />
       <workItem from="1733761206335" duration="222000" />
-      <workItem from="1733761483984" duration="864000" />
+      <workItem from="1733761483984" duration="1698000" />
     </task>
+    <task id="LOCAL-00001" summary="fix: correct the project file structure">
+      <option name="closed" value="true" />
+      <created>1733762422340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733762422340</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,5 +140,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: correct the project file structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: correct the project file structure" />
   </component>
 </project>

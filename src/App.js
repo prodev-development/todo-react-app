@@ -1,14 +1,15 @@
 import React from "react";
+import { Container } from "@mui/material";
 
 import Header from "./components/layout/Header";
-import TodoList from "./pages/todo";
+import Todo from "./pages/Todo";
 
 const App = () => {
   return (
-    <div className="container">
+    <Container maxWidth="lg">
       <Header />
-      <TodoList />
-    </div>
+      <Todo />
+    </Container>
   );
 };
 
