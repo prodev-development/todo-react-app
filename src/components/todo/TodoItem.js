@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo, useCallback } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
 
 import Tool from "./TodoActionBtn";
@@ -81,13 +81,11 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
             />
           ) : currentItem.completed ? (
             <>
-              <Box sx={{ textDecoration: "line-through" }}>{item.title}</Box>
-              <Box component="span" typography="caption">
-                {currentItem.description}
-              </Box>
+              <Box component="del">{item.title}</Box>
+              <Box typography="caption">{currentItem.description}</Box>
             </>
           ) : (
-            <Box component="span">{item.title}</Box>
+            <Box>{item.title}</Box>
           )
         }
       />
