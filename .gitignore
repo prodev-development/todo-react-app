@@ -10,6 +10,12 @@
 
 # production
 /build
+/dist
+
+# IDE-specific files
+.vscode/
+.idea/
+*.iml
 
 # misc
 .DS_Store
@@ -22,4 +28,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Environment variables
 .env
