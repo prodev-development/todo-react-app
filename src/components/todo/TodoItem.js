@@ -12,7 +12,7 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
   }, [item]);
 
   const convertString = useCallback(
-    ({ date }) => `${date.toLocaleString()} completed.`,
+    (date) => `${date.toLocaleString()} completed.`,
     [],
   );
 
@@ -20,12 +20,12 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
     (value) => {
       const completedItem = {
         ...currentItem,
-        date: new Date(),
-        checked: value,
+        description: convertString(new Date()),
+        completed: value,
       };
       onEdit(completedItem);
     },
-    [onEdit, currentItem],
+    [onEdit, currentItem, convertString],
   );
 
   const handleEdit = useCallback(() => {
@@ -33,15 +33,15 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
   }, []);
 
   const handleRemove = useCallback(() => {
-    // const res = confirm("Are you sure you want to delete this item?");
-    // if (!res) {
-    //   return;
-    // }
+    const res = confirm("Are you sure you want to delete this item?");
+    if (!res) {
+      return;
+    }
     onRemove(currentItem);
   }, [onRemove, currentItem]);
 
   const handleSave = useCallback(() => {
-    if (currentItem.text.trim() === "") {
+    if (currentItem.title.trim() === "") {
       return;
     }
     onEdit(currentItem);
@@ -63,7 +63,7 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={currentItem.checked}
+            checked={currentItem.completed || false}
             onChange={(e) => handleComplete(e.target.checked)}
             color="primary"
           />
@@ -79,11 +79,11 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
                 setCurrentItem({ ...currentItem, title: e.target.value })
               }
             />
-          ) : currentItem.checked ? (
+          ) : currentItem.completed ? (
             <>
               <Box sx={{ textDecoration: "line-through" }}>{item.title}</Box>
               <Box component="span" typography="caption">
-                {convertString(currentItem)}
+                {currentItem.description}
               </Box>
             </>
           ) : (
