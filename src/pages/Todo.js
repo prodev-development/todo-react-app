@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 
 import TodoItem from "../components/todo/TodoItem";
 import TodoAdd from "../components/todo/AddItem";
-import { useTodos } from "../store/selectors/todo";
-import { addTodo, changeTodo, removeTodo } from "../store/actions/todo";
+import { useTodos } from "../redux/selectors/todo";
+import { addTodo, changeTodo, removeTodo } from "../redux/actions/todo";
 
 const TodoPage = () => {
   const dispatch = useDispatch();

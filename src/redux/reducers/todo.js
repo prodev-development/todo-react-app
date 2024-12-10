@@ -1,15 +1,25 @@
-import { v4 as uuidv4 } from "uuid";
+import {
+  ADD_TODO_START,
+  ADD_TODO_SUCCESS,
+  ADD_TODO_ERROR,
+} from "../actions/todo";
 
 const initialState = {
+  loading: false,
   todos: [],
+  error: "",
 };
 
 const todo = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_TODO": {
-      const { todos } = state;
-      const newTodos = todos.concat({ id: uuidv4(), ...action.data });
-      return { ...state, todos: newTodos };
+    case ADD_TODO_START: {
+      return { ...state, loading: true };
+    }
+    case ADD_TODO_SUCCESS: {
+      return { ...state, loading: false };
+    }
+    case ADD_TODO_ERROR: {
+      return { ...state, loading: false, error: action.error };
     }
     case "CHANGE_TODO": {
       const { todos } = state;

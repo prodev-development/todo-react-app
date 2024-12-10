@@ -9,7 +9,7 @@ const AddItem = ({ onAdd }) => {
     if (value.trim() === "") {
       return;
     }
-    onAdd({ text: value });
+    onAdd({ title: value });
     setValue("");
   }, [onAdd, value]);
 

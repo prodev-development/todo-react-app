@@ -33,10 +33,10 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
   }, []);
 
   const handleRemove = useCallback(() => {
-    const res = confirm("Are you sure you want to delete this item?");
-    if (!res) {
-      return;
-    }
+    // const res = confirm("Are you sure you want to delete this item?");
+    // if (!res) {
+    //   return;
+    // }
     onRemove(currentItem);
   }, [onRemove, currentItem]);
 
@@ -74,20 +74,20 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
               fullWidth
               label="Todo Text"
               variant="outlined"
-              value={currentItem.text || ""}
+              value={currentItem.title || ""}
               onChange={(e) =>
-                setCurrentItem({ ...currentItem, text: e.target.value })
+                setCurrentItem({ ...currentItem, title: e.target.value })
               }
             />
           ) : currentItem.checked ? (
             <>
-              <Box sx={{ textDecoration: "line-through" }}>{item.text}</Box>
+              <Box sx={{ textDecoration: "line-through" }}>{item.title}</Box>
               <Box component="span" typography="caption">
                 {convertString(currentItem)}
               </Box>
             </>
           ) : (
-            <Box component="span">{item.text}</Box>
+            <Box component="span">{item.title}</Box>
           )
         }
       />
@@ -96,25 +96,25 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
           isVisible={isEditable}
           color="primary"
           onClick={handleSave}
-          text="Save"
+          title="Save"
         />
         <Tool
           isVisible={isEditable}
           color="error"
           onClick={handleCancel}
-          text="Cancel"
+          title="Cancel"
         />
         <Tool
           isVisible={!isEditable}
           color="primary"
           onClick={handleEdit}
-          text="Edit"
+          title="Edit"
         />
         <Tool
           isVisible={!isEditable}
           color="error"
           onClick={handleRemove}
-          text="Remove"
+          title="Remove"
         />
       </Box>
     </Box>
