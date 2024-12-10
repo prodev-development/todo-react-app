@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73950685-4a4e-4334-b0c6-35244538afb3" name="Changes" comment="fix: correct the project file structure">
+    <list default="true" id="73950685-4a4e-4334-b0c6-35244538afb3" name="Changes" comment="fix: design data and UI separately">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Todo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todo/AddItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todo/AddItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todo/TodoActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todo/TodoActionBtn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todo/TodoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todo/TodoItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/todo.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,25 +26,28 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/prodev-development/todo-react-app.git",
-    "accountId": "40bdd5e3-d693-405d-b73c-ca019b44ff77"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/prodev-development/todo-react-app.git&quot;,
+    &quot;accountId&quot;: &quot;40bdd5e3-d693-405d-b73c-ca019b44ff77&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "prodev-development",
-    "repository": "todo-react-app"
+    &quot;owner&quot;: &quot;prodev-development&quot;,
+    &quot;repository&quot;: &quot;todo-react-app&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -53,17 +59,21 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Node.js.store.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#1 on fix/241209-1",
+    "git-widget-placeholder": "fix/1209-3",
     "last_opened_file_path": "E:/todo-react-app/src/store/reducers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.lint.executor": "Run",
+    "npm.lint:format.executor": "Run",
     "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.sourceCode.HTML",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -80,7 +90,17 @@
       <recent name="E:\todo-react-app\src\store\selectors" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.lint:format">
+    <configuration name="lint:format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint:format" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -93,6 +113,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.lint:format" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -115,6 +137,7 @@
       <workItem from="1733761071471" duration="130000" />
       <workItem from="1733761206335" duration="222000" />
       <workItem from="1733761483984" duration="1698000" />
+      <workItem from="1733787688652" duration="2996000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct the project file structure">
       <option name="closed" value="true" />
@@ -143,6 +166,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix: correct the project file structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: correct the project file structure" />
+    <MESSAGE value="fix: change line ending by eslint" />
+    <MESSAGE value="fix: design data and UI separately" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: design data and UI separately" />
   </component>
 </project>

@@ -1,50 +1,57 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { useEffect, useState, memo, useCallback } from "react";
 import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { useDispatch } from "react-redux";
 
-import Tool from "./TodoActions";
-import { changeTodo, removeTodo } from "../../store/actions/todo";
+import Tool from "./TodoActionBtn";
 
-const TodoItem = ({ item }) => {
-  const dispatch = useDispatch();
+const TodoItem = ({ item, onEdit, onRemove }) => {
   const [currentItem, setCurrentItem] = useState({});
   const [isEditable, setIsEditable] = useState(false);
 
   useEffect(() => {
-    setCurrentItem(item);
+    setCurrentItem({ ...item });
   }, [item]);
 
-  const onComplete = (value) => {
-    setCurrentItem({
-      ...currentItem,
-      date: new Date(),
-      checked: value,
-    });
-  };
+  const convertString = useCallback(
+    ({ date }) => `${date.toLocaleString()} completed.`,
+    [],
+  );
 
-  const convertString = ({ date }) => {
-    return `${date.toLocaleString()} completed.`;
-  };
+  const handleComplete = useCallback(
+    (value) => {
+      const completedItem = {
+        ...currentItem,
+        date: new Date(),
+        checked: value,
+      };
+      onEdit(completedItem);
+    },
+    [onEdit, currentItem],
+  );
 
-  const onEdit = () => {
+  const handleEdit = useCallback(() => {
     setIsEditable(true);
-  };
+  }, []);
 
-  const onRemove = () => {
+  const handleRemove = useCallback(() => {
     const res = confirm("Are you sure you want to delete this item?");
     if (!res) {
       return;
     }
-    dispatch(removeTodo(currentItem));
-  };
+    onRemove(currentItem);
+  }, [onRemove, currentItem]);
 
-  const onSave = () => {
-    dispatch(changeTodo(currentItem));
+  const handleSave = useCallback(() => {
+    if (currentItem.text.trim() === "") {
+      return;
+    }
+    onEdit(currentItem);
     setIsEditable(false);
-  };
-  const onCancel = () => {
+  }, [onEdit, currentItem]);
+
+  const handleCancel = useCallback(() => {
     setIsEditable(false);
-  };
+    setCurrentItem({ ...item });
+  }, []);
 
   return (
     <Box
@@ -57,7 +64,7 @@ const TodoItem = ({ item }) => {
         control={
           <Checkbox
             checked={currentItem.checked}
-            onChange={(e) => onComplete(e.target.checked)}
+            onChange={(e) => handleComplete(e.target.checked)}
             color="primary"
           />
         }
@@ -88,25 +95,25 @@ const TodoItem = ({ item }) => {
         <Tool
           isVisible={isEditable}
           color="primary"
-          onClick={onSave}
+          onClick={handleSave}
           text="Save"
         />
         <Tool
           isVisible={isEditable}
           color="error"
-          onClick={onCancel}
+          onClick={handleCancel}
           text="Cancel"
         />
         <Tool
           isVisible={!isEditable}
           color="primary"
-          onClick={onEdit}
+          onClick={handleEdit}
           text="Edit"
         />
         <Tool
           isVisible={!isEditable}
           color="error"
-          onClick={onRemove}
+          onClick={handleRemove}
           text="Remove"
         />
       </Box>
@@ -114,4 +121,4 @@ const TodoItem = ({ item }) => {
   );
 };
 
-export default TodoItem;
+export default memo(TodoItem);
