@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { Box, Divider, Stack } from "@mui/material";
 import { useDispatch } from "react-redux";
-
-import TodoItem from "../components/todo/TodoItem";
 import TodoAdd from "../components/todo/AddItem";
 import { useTodos } from "../redux/selectors/todo";
 import {
@@ -11,6 +9,7 @@ import {
   fetchAllTodos,
   removeTodo,
 } from "../redux/actions/todo";
+import TodoItem from "../components/todo/TodoItem";
 
 const TodoPage = () => {
   const dispatch = useDispatch();

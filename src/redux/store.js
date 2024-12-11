@@ -1,7 +1,10 @@
-import { createStore, applyMiddleware } from "redux";
-import { thunk } from "redux-thunk";
-import todoReducer from "./reducers/todo";
+import { configureStore } from "@reduxjs/toolkit";
+import todoReducer from "./slices/todo";
 
-const store = createStore(todoReducer, applyMiddleware(thunk));
+const store = configureStore({
+  reducer: {
+    todos: todoReducer,
+  },
+});
 
 export default store;
