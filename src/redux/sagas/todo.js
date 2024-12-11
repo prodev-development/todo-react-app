@@ -34,8 +34,8 @@ function* changeTodo(action) {
 function* removeTodo(action) {
   try {
     const { data } = action;
-    yield call(axios.delete, `${process.env.REACT_APP_API_URL}/todos/${data._id}`);
-    yield put({ type: actionTypes.REMOVE_TODO_SUCCESS, payload: action.payload });
+    const response = yield call(axios.delete, `${process.env.REACT_APP_API_URL}/todos/${data._id}`);
+    yield put({ type: actionTypes.REMOVE_TODO_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: actionTypes.REMOVE_TODO_ERROR, error });
   }
