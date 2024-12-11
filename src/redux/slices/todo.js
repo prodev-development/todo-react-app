@@ -1,10 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {
-  addTodo,
-  changeTodo,
-  fetchAllTodos,
-  removeTodo,
-} from "../actions/todo";
+import { createSlice } from '@reduxjs/toolkit';
+import { addTodo, changeTodo, fetchAllTodos, removeTodo } from '../actions/todo';
 
 const initialState = {
   todos: [],
@@ -13,7 +8,7 @@ const initialState = {
 };
 
 const todoSlice = createSlice({
-  name: "todos",
+  name: 'todos',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
-import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { Box, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import Tool from "./TodoActionBtn";
+import Tool from './TodoActionBtn';
 
 const TodoItem = ({ item, onEdit, onRemove }) => {
   const [currentItem, setCurrentItem] = useState({});
@@ -33,7 +33,8 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
   }, []);
 
   const handleRemove = useCallback(() => {
-    const res = confirm("Are you sure you want to delete this item?");
+    // eslint-disable-next-line no-restricted-globals
+    const res = confirm('Are you sure you want to delete this item?');
     if (!res) {
       return;
     }
@@ -41,7 +42,7 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
   }, [onRemove, currentItem]);
 
   const handleSave = useCallback(() => {
-    if (currentItem.title.trim() === "") {
+    if (currentItem.title.trim() === '') {
       return;
     }
     onEdit(currentItem);
@@ -51,7 +52,7 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
   const handleCancel = useCallback(() => {
     setIsEditable(false);
     setCurrentItem({ ...item });
-  }, []);
+  }, [item]);
 
   return (
     <Box
@@ -74,7 +75,7 @@ const TodoItem = ({ item, onEdit, onRemove }) => {
               fullWidth
               label="Todo Text"
               variant="outlined"
-              value={currentItem.title || ""}
+              value={currentItem.title || ''}
               onChange={(e) =>
                 setCurrentItem({ ...currentItem, title: e.target.value })
               }

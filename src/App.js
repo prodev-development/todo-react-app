@@ -1,8 +1,8 @@
-import React from "react";
-import { Container } from "@mui/material";
+import { Container } from '@mui/material';
+import React from 'react';
 
-import Header from "./components/layout/Header";
-import Todo from "./pages/Todo";
+import Header from './components/layout/Header';
+import Todo from './pages/Todo';
 
 const App = () => {
   return (
