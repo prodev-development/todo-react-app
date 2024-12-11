@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 
-const Tool = ({ isVisible, text, color, onClick }) => {
+const TodoActionBtn = ({ isVisible, title, color, onClick }) => {
   return isVisible ? (
     <Box>
       <Button
@@ -10,7 +10,7 @@ const Tool = ({ isVisible, text, color, onClick }) => {
         onClick={onClick}
         sx={{ ml: 1 }}
       >
-        {text}
+        {title}
       </Button>
     </Box>
   ) : (
@@ -18,4 +18,4 @@ const Tool = ({ isVisible, text, color, onClick }) => {
   );
 };
 
-export default Tool;
+export default TodoActionBtn;
