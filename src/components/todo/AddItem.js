@@ -1,21 +1,16 @@
 import React, { useState, useCallback } from "react";
 import { TextField, Button } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { Box } from "@mui/material";
 
-import { addTodo } from "../../store/actions/todo";
-
 const AddItem = ({ onAdd }) => {
-  // const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
-  // const onAdd = () => {
-  //   dispatch(addTodo({ text: value }));
-  // };
-
   const handleAdd = useCallback(() => {
-    // @todo - add validation
-    onAdd(value);    
+    if (value.trim() === "") {
+      return;
+    }
+    onAdd({ title: value });
+    setValue("");
   }, [onAdd, value]);
 
   return (

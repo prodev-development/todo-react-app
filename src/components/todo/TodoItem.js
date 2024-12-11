@@ -1,50 +1,57 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { useDispatch } from "react-redux";
 
-import Tool from "./TodoActions";
-import { changeTodo, removeTodo } from "../../store/actions/todo";
+import Tool from "./TodoActionBtn";
 
-const TodoItem = ({ item }) => {
-  const dispatch = useDispatch();
+const TodoItem = ({ item, onEdit, onRemove }) => {
   const [currentItem, setCurrentItem] = useState({});
   const [isEditable, setIsEditable] = useState(false);
 
   useEffect(() => {
-    setCurrentItem(item);
+    setCurrentItem({ ...item });
   }, [item]);
 
-  const onComplete = (value) => {
-    setCurrentItem({
-      ...currentItem,
-      date: new Date(),
-      checked: value,
-    });
-  };
+  const convertString = useCallback(
+    (date) => `${date.toLocaleString()} completed.`,
+    [],
+  );
 
-  const convertString = ({ date }) => {
-    return `${date.toLocaleString()} completed.`;
-  };
+  const handleComplete = useCallback(
+    (value) => {
+      const completedItem = {
+        ...currentItem,
+        description: convertString(new Date()),
+        completed: value,
+      };
+      onEdit(completedItem);
+    },
+    [onEdit, currentItem, convertString],
+  );
 
-  const onEdit = () => {
+  const handleEdit = useCallback(() => {
     setIsEditable(true);
-  };
+  }, []);
 
-  const onRemove = () => {
+  const handleRemove = useCallback(() => {
     const res = confirm("Are you sure you want to delete this item?");
     if (!res) {
       return;
     }
-    dispatch(removeTodo(currentItem));
-  };
+    onRemove(currentItem);
+  }, [onRemove, currentItem]);
 
-  const onSave = () => {
-    dispatch(changeTodo(currentItem));
+  const handleSave = useCallback(() => {
+    if (currentItem.title.trim() === "") {
+      return;
+    }
+    onEdit(currentItem);
     setIsEditable(false);
-  };
-  const onCancel = () => {
+  }, [onEdit, currentItem]);
+
+  const handleCancel = useCallback(() => {
     setIsEditable(false);
-  };
+    setCurrentItem({ ...item });
+  }, []);
 
   return (
     <Box
@@ -56,8 +63,8 @@ const TodoItem = ({ item }) => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={currentItem.checked}
-            onChange={(e) => onComplete(e.target.checked)}
+            checked={currentItem.completed || false}
+            onChange={(e) => handleComplete(e.target.checked)}
             color="primary"
           />
         }
@@ -67,20 +74,18 @@ const TodoItem = ({ item }) => {
               fullWidth
               label="Todo Text"
               variant="outlined"
-              value={currentItem.text || ""}
+              value={currentItem.title || ""}
               onChange={(e) =>
-                setCurrentItem({ ...currentItem, text: e.target.value })
+                setCurrentItem({ ...currentItem, title: e.target.value })
               }
             />
-          ) : currentItem.checked ? (
+          ) : currentItem.completed ? (
             <>
-              <Box sx={{ textDecoration: "line-through" }}>{item.text}</Box>
-              <Box component="span" typography="caption">
-                {convertString(currentItem)}
-              </Box>
+              <Box component="del">{item.title}</Box>
+              <Box typography="caption">{currentItem.description}</Box>
             </>
           ) : (
-            <Box component="span">{item.text}</Box>
+            <Box>{item.title}</Box>
           )
         }
       />
@@ -88,30 +93,30 @@ const TodoItem = ({ item }) => {
         <Tool
           isVisible={isEditable}
           color="primary"
-          onClick={onSave}
-          text="Save"
+          onClick={handleSave}
+          title="Save"
         />
         <Tool
           isVisible={isEditable}
           color="error"
-          onClick={onCancel}
-          text="Cancel"
+          onClick={handleCancel}
+          title="Cancel"
         />
         <Tool
           isVisible={!isEditable}
           color="primary"
-          onClick={onEdit}
-          text="Edit"
+          onClick={handleEdit}
+          title="Edit"
         />
         <Tool
           isVisible={!isEditable}
           color="error"
-          onClick={onRemove}
-          text="Remove"
+          onClick={handleRemove}
+          title="Remove"
         />
       </Box>
     </Box>
   );
 };
 
-export default TodoItem;
+export default memo(TodoItem);
